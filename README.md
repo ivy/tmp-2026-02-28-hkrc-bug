@@ -19,7 +19,7 @@ Requires [hk](https://github.com/jdx/hk) and git. Run `mise install` to install 
 
 ## Summary
 
-The hkrc feature has two bugs:
+The [hkrc feature](https://hk.jdx.dev/configuration#hkrc) has two bugs:
 
 1. **Deserialization panic**: hkrc files that amend `Config.pkl` (as shown in the docs) panic because hk deserializes them as `UserConfig`, where `check` is `Option<bool>`, not a string command.
 2. **Default path is CWD-relative**: The default hkrc path is `PathBuf::from(".hkrc.pkl")` (relative to CWD), not `~/.hkrc.pkl` as the docs state.
