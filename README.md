@@ -3,6 +3,20 @@
 > [!NOTE]
 > This is a blameless bug report. PRs are cited to trace how the code evolved, not to assign fault. Bugs like these are a natural consequence of incremental development across many changes.
 
+## Steps to reproduce
+
+```bash
+git clone https://github.com/ivy/tmp-2026-02-28-hkrc-bug && cd tmp-2026-02-28-hkrc-bug
+./reproduce.sh
+```
+
+The script sets up a minimal project with a `hk.pkl` (trailing-whitespace step) and a `global-hkrc.pkl` that amends `Config.pkl` with a gitleaks step. It runs pre-commit twice:
+
+1. **Without hkrc** — works fine
+2. **With `--hkrc global-hkrc.pkl`** — panics: `invalid type: string "gitleaks git ...", expected a boolean`
+
+Requires [hk](https://github.com/jdx/hk) and git. Run `mise install` to install hk via the included `mise.toml`.
+
 ## Summary
 
 The hkrc feature has two bugs:
